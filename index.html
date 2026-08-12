@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#eaf7ff">
   <meta name="description" content="毎日の勉強とピアノを楽しく記録する学習タイマー">
-  <title>AKARI Study Timer</title>
+  <title>MIKABU Study Timer</title>
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <section id="authScreen" class="auth-screen hidden" aria-label="家族連携">
     <div class="auth-card">
-      <div class="auth-mark">☁</div>
+      <img class="auth-mascot" src="assets/mikabu-mascot.png" alt="ミカブのキャラクター">
       <h1>家族でつながる</h1>
       <p>同じ家族アカウントでログインすると、娘さんのがんばりを保護者のスマホから確認できます。</p>
       <form id="authForm">
@@ -26,10 +26,10 @@
     </div>
   </section>
   <dialog id="modeDialog"><form method="dialog" class="dialog-card mode-card"><h2>この端末はどちらですか？</h2><p>一度選ぶと、この端末に記憶されます。設定から変更できます。</p><div class="mode-actions"><button value="daughter" class="mode-choice"><span>🌷</span><b>娘モード</b><small>タイマーを操作する</small></button><button value="parent" class="mode-choice"><span>👪</span><b>保護者モード</b><small>がんばりを見守る</small></button></div></form></dialog>
-  <div class="sky-decor" aria-hidden="true"><span>✦</span><span>☁</span><span>✧</span></div>
+  <div class="sky-decor" aria-hidden="true"><span>❄</span><span>🌿</span><span>❄</span><span>🍊</span><span>🌻</span><span>🎀</span></div>
   <div id="daughterApp" class="app-shell">
     <header class="topbar">
-      <div><p id="greeting" class="greeting">おはよう！</p><p class="subtitle">今日も一緒にがんばろうね<span> ✨</span></p></div>
+      <div><p class="brand-name">MIKABU <small>Study Timer</small></p><p id="greeting" class="greeting">おはよう！</p><p class="subtitle">今日も一緒にがんばろうね<span> ❄</span></p></div>
       <button class="round-button" id="settingsButton" aria-label="設定を開く"><span>⚙</span>設定</button>
     </header>
 
@@ -44,7 +44,7 @@
         <section class="card summary-card">
           <div class="total-time"><span class="clock-icon">◷</span><div><h2>今日の合計時間</h2><p><strong id="totalHours">00</strong> 時間 <strong id="totalMinutes">00</strong> 分</p></div></div>
           <div id="encouragement" class="speech">まだ始めてないよ！<br>さあ、スタートしよう♪</div>
-          <div class="mascot" aria-label="しろくまのあかりちゃん"><span class="ear left"></span><span class="ear right"></span><span class="face">•ᴥ•</span><span class="bow">⋈</span></div>
+          <div class="mascot-picture"><img src="assets/mikabu-mascot.png" alt="ミカブのキャラクター"></div>
         </section>
 
         <div class="dashboard-grid">
@@ -66,7 +66,7 @@
   </div>
 
   <div id="parentApp" class="parent-shell hidden">
-    <header class="parent-header"><div><p class="parent-eyebrow">AKARI Study Timer</p><h1 id="parentGreeting">今日のがんばり</h1><p id="parentSyncStatus" class="sync-status">クラウドに接続しています…</p></div><button id="parentSettingsButton" class="parent-menu-button" aria-label="保護者設定">⚙</button></header>
+    <header class="parent-header"><div><p class="parent-eyebrow">MIKABU Study Timer 🌿</p><h1 id="parentGreeting">今日のがんばり</h1><p id="parentSyncStatus" class="sync-status">クラウドに接続しています…</p></div><button id="parentSettingsButton" class="parent-menu-button" aria-label="保護者設定">⚙</button></header>
     <main>
       <div class="date-card parent-date"><span>▣</span><time id="parentDate"></time></div>
       <section class="card parent-progress-card"><div class="section-heading"><h2>今日の進捗</h2><span id="parentRunningBadge" class="running-badge hidden">取り組み中</span></div><div id="parentSubjectList" class="parent-subject-list"></div></section>

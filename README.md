@@ -1,4 +1,4 @@
-# AKARI Study Timer
+# MIKABU Study Timer
 
 小学生が毎日の学習とピアノ練習を楽しく記録できる、スマートフォン優先の学習タイマーです。
 
