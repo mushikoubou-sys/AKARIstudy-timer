@@ -14,14 +14,14 @@
     <div class="auth-card">
       <img class="auth-mascot" src="assets/mikabu-mascot.png" alt="ミカブのキャラクター">
       <h1>家族でつながる</h1>
-      <p>同じ家族アカウントでログインすると、娘さんのがんばりを保護者のスマホから確認できます。</p>
+      <p>ログインせずに、娘さんのがんばりを保護者のスマホから確認できます。</p>
       <form id="authForm">
         <label>家族用メールアドレス<input id="emailInput" type="email" autocomplete="email" required placeholder="family@example.com"></label>
         <label>家族用パスワード<input id="passwordInput" type="password" autocomplete="current-password" minlength="6" required placeholder="6文字以上"></label>
         <button id="loginButton" type="submit" class="primary-button">ログイン</button>
         <button id="createAccountButton" type="button" class="secondary-button">はじめての家族登録</button>
       </form>
-      <p class="auth-note">親子の端末で同じ情報を入力します。パスワードはこの端末に表示されず、Firebaseが安全に管理します。</p>
+      <p class="auth-note">現在はログイン不要モードです。</p>
       <p id="authError" class="auth-error" role="alert"></p>
     </div>
   </section>
@@ -75,7 +75,7 @@
     </main>
   </div>
 
-  <dialog id="settingsDialog"><form method="dialog" class="dialog-card"><div class="dialog-title"><h2>設定</h2><button value="cancel" aria-label="閉じる">×</button></div><div class="connection-panel"><span id="connectionDot" class="connection-dot"></span><div><b id="connectionLabel">クラウド同期</b><small id="accountLabel"></small></div></div><label>お名前<input id="nameInput" maxlength="12" placeholder="あかり"></label><h3>ごほうびの編集</h3><div id="rewardSettings"></div><button id="saveSettings" value="default" class="primary-button">保存する</button><button id="switchModeButton" value="cancel" type="button" class="secondary-button settings-action">この端末のモードを変更</button><button id="logoutButton" value="cancel" type="button" class="text-danger settings-action">家族アカウントからログアウト</button></form></dialog>
+  <dialog id="settingsDialog"><form method="dialog" class="dialog-card"><div class="dialog-title"><h2>設定</h2><button value="cancel" aria-label="閉じる">×</button></div><div class="connection-panel"><span id="connectionDot" class="connection-dot"></span><div><b id="connectionLabel">クラウド同期</b><small id="accountLabel"></small></div></div><label>お名前<input id="nameInput" maxlength="12" placeholder="あかり"></label><h3>ごほうびの編集</h3><div id="rewardSettings"></div><button id="saveSettings" value="default" class="primary-button">保存する</button><button id="switchModeButton" value="cancel" type="button" class="secondary-button settings-action">この端末のモードを変更</button><button id="logoutButton" value="cancel" type="button" class="text-danger settings-action hidden">ログアウト</button></form></dialog>
   <dialog id="confirmDialog"><form method="dialog" class="dialog-card confirm-card"><div class="confirm-icon">⭐</div><h2 id="confirmTitle">確認</h2><p id="confirmText"></p><div class="confirm-actions"><button value="cancel" class="secondary-button">やめる</button><button id="confirmAction" value="default" class="primary-button">はい</button></div></form></dialog>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
   <script src="firebase-config.js"></script>
