@@ -1,4 +1,4 @@
-const CACHE='mikabu-timer-v6';
+const CACHE='mikabu-timer-v7';
 const ASSETS=['./','./index.html','./styles.css','./app.js','./firebase-config.js','./cloud-sync.js','./manifest.webmanifest','./assets/mikabu-mascot.png'];
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS))));
 self.addEventListener('activate',event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key!==CACHE).map(key=>caches.delete(key))))));
