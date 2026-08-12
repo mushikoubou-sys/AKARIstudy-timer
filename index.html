@@ -10,8 +10,24 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <section id="authScreen" class="auth-screen hidden" aria-label="家族連携">
+    <div class="auth-card">
+      <div class="auth-mark">☁</div>
+      <h1>家族でつながる</h1>
+      <p>同じ家族アカウントでログインすると、娘さんのがんばりを保護者のスマホから確認できます。</p>
+      <form id="authForm">
+        <label>家族用メールアドレス<input id="emailInput" type="email" autocomplete="email" required placeholder="family@example.com"></label>
+        <label>家族用パスワード<input id="passwordInput" type="password" autocomplete="current-password" minlength="6" required placeholder="6文字以上"></label>
+        <button id="loginButton" type="submit" class="primary-button">ログイン</button>
+        <button id="createAccountButton" type="button" class="secondary-button">はじめての家族登録</button>
+      </form>
+      <p class="auth-note">親子の端末で同じ情報を入力します。パスワードはこの端末に表示されず、Firebaseが安全に管理します。</p>
+      <p id="authError" class="auth-error" role="alert"></p>
+    </div>
+  </section>
+  <dialog id="modeDialog"><form method="dialog" class="dialog-card mode-card"><h2>この端末はどちらですか？</h2><p>一度選ぶと、この端末に記憶されます。設定から変更できます。</p><div class="mode-actions"><button value="daughter" class="mode-choice"><span>🌷</span><b>娘モード</b><small>タイマーを操作する</small></button><button value="parent" class="mode-choice"><span>👪</span><b>保護者モード</b><small>がんばりを見守る</small></button></div></form></dialog>
   <div class="sky-decor" aria-hidden="true"><span>✦</span><span>☁</span><span>✧</span></div>
-  <div class="app-shell">
+  <div id="daughterApp" class="app-shell">
     <header class="topbar">
       <div><p id="greeting" class="greeting">おはよう！</p><p class="subtitle">今日も一緒にがんばろうね<span> ✨</span></p></div>
       <button class="round-button" id="settingsButton" aria-label="設定を開く"><span>⚙</span>設定</button>
@@ -49,9 +65,21 @@
     </nav>
   </div>
 
-  <dialog id="settingsDialog"><form method="dialog" class="dialog-card"><div class="dialog-title"><h2>設定</h2><button value="cancel" aria-label="閉じる">×</button></div><label>お名前<input id="nameInput" maxlength="12" placeholder="あかり"></label><h3>ごほうびの編集</h3><div id="rewardSettings"></div><button id="saveSettings" value="default" class="primary-button">保存する</button></form></dialog>
+  <div id="parentApp" class="parent-shell hidden">
+    <header class="parent-header"><div><p class="parent-eyebrow">AKARI Study Timer</p><h1 id="parentGreeting">今日のがんばり</h1><p id="parentSyncStatus" class="sync-status">クラウドに接続しています…</p></div><button id="parentSettingsButton" class="parent-menu-button" aria-label="保護者設定">⚙</button></header>
+    <main>
+      <div class="date-card parent-date"><span>▣</span><time id="parentDate"></time></div>
+      <section class="card parent-progress-card"><div class="section-heading"><h2>今日の進捗</h2><span id="parentRunningBadge" class="running-badge hidden">取り組み中</span></div><div id="parentSubjectList" class="parent-subject-list"></div></section>
+      <div class="parent-summary-grid"><section class="card parent-stat"><span>☆</span><h2>今日のミッション</h2><p><strong id="parentMission">0 / 7</strong> 完了</p></section><section class="card parent-stat"><span>◷</span><h2>今日の合計時間</h2><p><strong id="parentTotal">0分</strong></p></section><section class="card parent-stat"><span>⭐</span><h2>がんばりポイント</h2><p><strong id="parentPoints">0 pt</strong></p></section></div>
+      <section class="card parent-note"><h2>そっと見守る画面です</h2><p>タイマーの操作は娘さん本人の端末から行います。実行中の秒数は、この画面でも自動で進みます。</p></section>
+    </main>
+  </div>
+
+  <dialog id="settingsDialog"><form method="dialog" class="dialog-card"><div class="dialog-title"><h2>設定</h2><button value="cancel" aria-label="閉じる">×</button></div><div class="connection-panel"><span id="connectionDot" class="connection-dot"></span><div><b id="connectionLabel">クラウド同期</b><small id="accountLabel"></small></div></div><label>お名前<input id="nameInput" maxlength="12" placeholder="あかり"></label><h3>ごほうびの編集</h3><div id="rewardSettings"></div><button id="saveSettings" value="default" class="primary-button">保存する</button><button id="switchModeButton" value="cancel" type="button" class="secondary-button settings-action">この端末のモードを変更</button><button id="logoutButton" value="cancel" type="button" class="text-danger settings-action">家族アカウントからログアウト</button></form></dialog>
   <dialog id="confirmDialog"><form method="dialog" class="dialog-card confirm-card"><div class="confirm-icon">⭐</div><h2 id="confirmTitle">確認</h2><p id="confirmText"></p><div class="confirm-actions"><button value="cancel" class="secondary-button">やめる</button><button id="confirmAction" value="default" class="primary-button">はい</button></div></form></dialog>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="firebase-config.js"></script>
+  <script type="module" src="cloud-sync.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

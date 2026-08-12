@@ -10,6 +10,15 @@
 - 1週間／科目別グラフ、日別記録、ごほうび交換
 - 保護者向けのお名前・ごほうび設定
 - レスポンシブ表示、PWA／オフライン対応
+- Firebase Authentication と Cloud Firestore による親子リアルタイム同期
+- 娘モード／閲覧専用の保護者モード
+- 既存の端末内記録を初回ログイン時にクラウドへ移行
+
+## クラウド同期
+
+親子の端末で同じ家族用メールアドレスとパスワードを使います。ログイン状態と端末モードは端末ごとに保持されます。Firestoreへは操作時のみ、累積時間・開始時刻・状態を保存し、実行中の秒数は各端末で計算します。
+
+Firestoreのルールは [firestore.rules](./firestore.rules) と同じ内容をFirebase Consoleへ設定してください。Firebase Web設定値は公開クライアント識別子であり、管理者秘密鍵ではありません。データ保護はFirebase AuthenticationとFirestore Security Rulesで行います。
 
 ## 公開方法
 
