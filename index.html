@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#eaf7ff">
+  <meta name="description" content="毎日の勉強とピアノを楽しく記録する学習タイマー">
+  <title>AKARI Study Timer</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="sky-decor" aria-hidden="true"><span>✦</span><span>☁</span><span>✧</span></div>
+  <div class="app-shell">
+    <header class="topbar">
+      <div><p id="greeting" class="greeting">おはよう！</p><p class="subtitle">今日も一緒にがんばろうね<span> ✨</span></p></div>
+      <button class="round-button" id="settingsButton" aria-label="設定を開く"><span>⚙</span>設定</button>
+    </header>
+
+    <main>
+      <section id="homeView" class="view active" aria-label="ホーム">
+        <div class="date-card"><span aria-hidden="true">▣</span><time id="todayDate"></time><span aria-hidden="true">›</span></div>
+        <section class="card task-card">
+          <div class="section-heading"><h1>今日のタスク</h1><span id="runningBadge" class="running-badge hidden">計測中</span></div>
+          <div id="taskList" class="task-list"></div>
+        </section>
+
+        <section class="card summary-card">
+          <div class="total-time"><span class="clock-icon">◷</span><div><h2>今日の合計時間</h2><p><strong id="totalHours">00</strong> 時間 <strong id="totalMinutes">00</strong> 分</p></div></div>
+          <div id="encouragement" class="speech">まだ始めてないよ！<br>さあ、スタートしよう♪</div>
+          <div class="mascot" aria-label="しろくまのあかりちゃん"><span class="ear left"></span><span class="ear right"></span><span class="face">•ᴥ•</span><span class="bow">⋈</span></div>
+        </section>
+
+        <div class="dashboard-grid">
+          <section class="card point-card"><h2>がんばりポイント</h2><div class="point-value"><span>⭐</span><strong id="pointTotal">0</strong><small>pt</small></div><p id="nextReward">つぎのごほうびまで あと 10 pt</p></section>
+          <section class="card mission-card"><h2>今日のミッション</h2><p class="mission-count"><strong id="missionCount">0</strong> / 7 <small>こ<br>完了</small></p><div id="missionStars" class="stars" aria-label="ミッション進捗"></div><p id="missionMessage">全部おわったら、すてきな一日になるよ♪</p></section>
+        </div>
+
+        <section class="card reward-preview"><div class="section-heading"><h2>ごほうび一覧</h2><button class="text-button" data-nav="rewards">変更する ›</button></div><div id="rewardPreview"></div></section>
+      </section>
+
+      <section id="recordsView" class="view"><div class="page-title"><span>◷</span><div><h1>学習の記録</h1><p>がんばった時間をふり返ろう</p></div></div><section class="card"><div id="recordsList" class="records-list"></div></section></section>
+      <section id="rewardsView" class="view"><div class="page-title"><span>🎁</span><div><h1>ごほうび</h1><p>がんばりポイントと交換できるよ</p></div></div><section class="card"><div class="points-banner">いまのポイント <strong id="rewardPointTotal">0 pt</strong></div><div id="rewardsList" class="rewards-list"></div></section><section class="card history-card"><h2>交換したごほうび</h2><div id="exchangeHistory"></div></section></section>
+      <section id="graphView" class="view"><div class="page-title"><span>▥</span><div><h1>がんばりグラフ</h1><p>少しずつの積み重ねを見てみよう</p></div></div><section class="card chart-card"><h2>この1週間の学習時間</h2><div id="weekChart" class="bar-chart"></div></section><section class="card subject-chart-card"><h2>科目ごとの時間</h2><div id="subjectChart"></div></section></section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="メインメニュー">
+      <button class="nav-item active" data-nav="home"><span>⌂</span>ホーム</button><button class="nav-item" data-nav="records"><span>◷</span>記録</button><button class="nav-item" data-nav="rewards"><span>🎁</span>ごほうび</button><button class="nav-item" data-nav="graph"><span>▥</span>グラフ</button>
+    </nav>
+  </div>
+
+  <dialog id="settingsDialog"><form method="dialog" class="dialog-card"><div class="dialog-title"><h2>設定</h2><button value="cancel" aria-label="閉じる">×</button></div><label>お名前<input id="nameInput" maxlength="12" placeholder="あかり"></label><h3>ごほうびの編集</h3><div id="rewardSettings"></div><button id="saveSettings" value="default" class="primary-button">保存する</button></form></dialog>
+  <dialog id="confirmDialog"><form method="dialog" class="dialog-card confirm-card"><div class="confirm-icon">⭐</div><h2 id="confirmTitle">確認</h2><p id="confirmText"></p><div class="confirm-actions"><button value="cancel" class="secondary-button">やめる</button><button id="confirmAction" value="default" class="primary-button">はい</button></div></form></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
