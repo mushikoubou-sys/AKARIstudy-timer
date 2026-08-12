@@ -13,3 +13,6 @@
 @media(max-width:430px){.mascot-picture{display:none}.summary-card{grid-template-columns:1fr}.topbar{align-items:flex-start}.brand-name small{display:none}}
 .parent-header-visual{display:flex;align-items:center;gap:12px}.parent-header-visual img{width:92px;height:92px;object-fit:cover;object-position:50% 40%;border:4px solid #b9e2d6;border-radius:50%;background:#effaf5;box-shadow:0 8px 20px rgba(46,130,105,.17)}
 @media(max-width:620px){.parent-header-visual{gap:7px}.parent-header-visual img{width:68px;height:68px}.parent-menu-button{width:48px;height:48px}.parent-header{gap:8px}.parent-header h1{font-size:1.3rem}}
+.daughter-header-visual{display:flex;align-items:center;gap:10px}.daughter-header-visual>img{width:76px;height:76px;object-fit:cover;object-position:50% 40%;border:3px solid #b9e2d6;border-radius:50%;background:#effaf5;box-shadow:0 7px 18px rgba(46,130,105,.16)}
+@media(max-width:720px){.daughter-header-visual{gap:5px}.daughter-header-visual>img{width:58px;height:58px}.topbar>div:first-child{min-width:0}.greeting{white-space:nowrap}.round-button{flex:0 0 auto}}
+@media(max-width:380px){.daughter-header-visual>img{width:50px;height:50px}.round-button{width:58px;height:58px}.topbar{gap:4px}.greeting{font-size:1.15rem}.subtitle{font-size:.86rem}}
